@@ -1,10 +1,37 @@
 {
 	"files.exclude": {
-		"*.aux": true,
-		"*.fdb_latexmk": true,
-		"*.fls": true,
-		"*.log": true,
-		"*.synctex.gz": true,
-		"*.toc": true
-	}
+		"**/*.aux": true,
+		"**/*.bbl": true,
+		"**/*.blg": true,
+		"**/*.fdb_latexmk": true,
+		"**/*.fls": true,
+		"**/*.glg": true,
+		"**/*.glo": true,
+		"**/*.gls": true,
+		"**/*.ist": true,
+		"**/*.log": true,
+		"**/*.synctex.gz": true,
+		"**/*.toc": true
+	},
+	"latex-workshop.bibtex-format.tab": "4 spaces",
+	"latex-workshop.bibtex-format.sortby": [
+		"author",
+		"year-desc",
+		"title"
+	],
+	"latex-workshop.latex.autoClean.run": "never",
+	"latex-workshop.latex.recipe.default": "lastUsed",
+	"latex-workshop.latex.tools": [
+		{
+			"name": "latexmk",
+			"command": "latexmk",
+			"args": [
+				"-synctex=1",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+				"-pdf",
+				"%DOC%"
+			]
+		}
+	]
 }

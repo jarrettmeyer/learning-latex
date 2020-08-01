@@ -1,8 +1,15 @@
 .DS_Store
 
 *.aux
+*.bbl
+*.bbg
+*.blg
 *.fdb_latexmk
 *.fls
+*.glg
+*.glo
+*.gls
+*.ist
 *.log
 *.pdf
 *.synctex.gz

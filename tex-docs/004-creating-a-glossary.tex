@@ -1,0 +1,41 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{glossaries}
+\usepackage{lipsum}
+
+\title{Creating a Glossary}
+\author{Jarrett Meyer}
+\date{July 31, 2020}
+
+% Run makeglossaries, and start creating glossary entries.
+\makeglossaries
+
+\newglossaryentry{ANOVA}{
+	name={ANOVA},
+	description={Analysis of variance (ANOVA) is a collection of statistical models and their associated estimation procedures used to analyze the differences among group means in a sample}
+}
+
+\newglossaryentry{latex}{
+	name={\LaTeX},
+	description={A document preparation system, used widely in academia for the communication and publication of scientific documents in many fields, including mathematics, statistics, computer science, engineering, physics, economics, linguistics, quantitative psychology, philosophy, and political science}
+}
+
+\newglossaryentry{LS means} {
+	name={LS means},
+	description={Means that are computed based on a linear model such as ANOVA}
+}
+
+\begin{document}
+
+\maketitle
+
+In this document, we are going to learn a little bit about \gls{ANOVA} and its components, including \gls{LS means}. This document was prepared
+using \gls{latex}.
+
+When printing the glossary, you can add the \texttt{nonumberlist} option to prevent page numbers from being printed.
+
+% \printglossary
+\printglossary[nonumberlist, style=long]
+
+\end{document}
