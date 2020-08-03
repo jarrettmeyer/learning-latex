@@ -1,4 +1,8 @@
+.texpadtmp/
+
 .DS_Store
+.RData
+.Rhistory
 
 *.aux
 *.bbl

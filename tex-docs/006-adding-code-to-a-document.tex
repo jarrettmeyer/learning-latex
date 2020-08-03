@@ -1,0 +1,95 @@
+\documentclass{article}
+
+
+\usepackage{geometry}
+\usepackage{eulervm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[usefilenames]{plex-otf}
+\usepackage{biblatex}
+
+
+% Add bibliography file.
+\addbibresource{references.bib}
+
+\title{Adding Code to a Document}
+\author{Jarrett Meyer}
+\date{August 3, 2020}
+
+\geometry{margin=1in}
+\setlength{\parskip}{1em}
+
+\definecolor{r-background-color}{HTML}{F8F8F8}
+\definecolor{r-comment-color}{HTML}{40772D}
+\definecolor{r-keyword-color}{HTML}{007AD4}
+\definecolor{r-string-color}{HTML}{FF8000}
+
+\lstdefinestyle{custom-r}{
+	language={R},
+	frame={tblr},
+	framesep={4pt},
+	framerule={0pt},
+	deletekeywords={_},
+	morekeywords={in},
+	basicstyle=\ttfamily,
+	backgroundcolor=\color{r-background-color},
+	commentstyle=\color{r-comment-color},
+	keywordstyle=\color{r-keyword-color}\bfseries,
+	stringstyle=\color{r-string-color},
+	showstringspaces=false,
+}
+
+% Begin the primary document.
+\begin{document}
+
+\maketitle
+
+The following function originally appears as Example 1.3.3 in Introduction to Mathematical Statistics \cite{Hogg2019}. I have cleaned it up from its original version. The original R code is, in my opinion, grossly written, and it should never have been presented to the reader, who may be reading R code for the very first time. My code has added the following features that were missing from the original version.
+
+\begin{itemize}
+	\item error handling for the input variable
+	\item better error handling
+	\item more descriptive variable names
+	\item proper use of the traditional R assignment operator, \texttt{<-} vs \texttt{=}
+	\item use of the \texttt{seq} function vs the \texttt{:} operator
+\end{itemize}
+
+% Show how to include 
+\lstinputlisting[style={custom-r}, caption={Computing probabilities of like birthdays}, label={lst:bday}]{../r-src/prob_bday.R}
+
+You may call this function from the R prompt in the following manner.
+
+\begin{lstlisting}[style={custom-r}]
+> source("prob_bday.R")
+> prob_bday(10)
+[1] 0.1169482
+\end{lstlisting}
+
+The proof for the above R function is follows.
+
+Let $P(S_n)$ be the probability that in a room of $n$ people, there are at least 2 people with the same birthday. Let $P(D_n)$ be the complement of $P(S_n)$ such that $P(S_n) = 1 - P(D_n)$.
+
+In a group of $n$ people, there are $P^{365}_n$ combinations of where everyone has a different birthday. Assuming that the probability of any given birthday is $\frac{1}{365}$ and assuming that birthdays are independent. Therefore, for $n \geq 2$,
+
+\begin{align*}
+	P(S_n) &= 1 - \frac{P^{365}_n}{365^n} \\
+	P(S_n) &= 1 - \frac{\frac{365!}{(365 - n)!}}{365^n}
+\end{align*}
+
+We can see the following pattern emerge.
+
+\begin{align*}
+	P(S_1) & = 1 - \frac{364}{365} \\
+	P(S_2) & = 1 - \frac{(364)(363)}{(365)(365)} \\
+	P(S_3) & = 1 - \frac{(364)(363)(362)}{(365)(365)(365)} \\
+	P(S_4) & = 1 - \frac{(364)(363)(362)(361)}{(365)(365)(365)(365)} \\
+	\dots  &
+\end{align*}
+
+This is the result that given in Listing \ref{lst:bday}, shown above. 
+
+\clearpage
+\printbibliography
+
+\end{document}
